@@ -10,27 +10,27 @@ function singleRound(playerSelection, computerSelection) {
     let result = '';
     playerSelection = playerSelection.toUpperCase();
     
-    if ((playerSelection == "ROCK") && (computerSelection == 'Scissors')) {
-        return result = `You win! your ${playerSelection} beats ${computerSelection}`;
-    }
-    else if ((playerSelection == "SCISSORS") && (computerSelection == "Paper")){
-        return result = `You win! your ${playerSelection} beats ${computerSelection}`;
-    }
-    else if ((playerSelection == 'PAPER') && (computerSelection == 'Rock')){
-        return result = `You win! your ${playerSelection} beats ${computerSelection}`;
-    }
-    else if ((computerSelection == 'Rock') && (playerSelection == "SCISSORS")) {
-        return result = `You lose. ${computerSelection} beats your ${playerSelection}`;
-    }
-    else if ((computerSelection == "Scissors") && (playerSelection == "PAPER")) {
-        return result = `You lose. ${computerSelection} beats your ${playerSelection}`;
-    }
-    else if ((computerSelection == "Paper") && (playerSelection == "ROCK")) {
-        return result = `You lose. ${computerSelection} beats your ${playerSelection}`;
-    }
-    else {
-        return result = "Bummer, it was a tie.";
-    }  
+        if ((playerSelection == "ROCK") && (computerSelection == 'Scissors')) {
+            return result = `You win! your ${playerSelection} beats ${computerSelection}`;
+        }
+        else if ((playerSelection == "SCISSORS") && (computerSelection == "Paper")){
+            return result = `You win! your ${playerSelection} beats ${computerSelection}`;
+        }
+        else if ((playerSelection == 'PAPER') && (computerSelection == 'Rock')){
+            return result = `You win! your ${playerSelection} beats ${computerSelection}`;
+        }
+        else if ((computerSelection == 'Rock') && (playerSelection == "SCISSORS")) {
+            return result = `You lose. ${computerSelection} beats your ${playerSelection}`;
+        }
+        else if ((computerSelection == "Scissors") && (playerSelection == "PAPER")) {
+            return result = `You lose. ${computerSelection} beats your ${playerSelection}`;
+        }
+        else if ((computerSelection == "Paper") && (playerSelection == "ROCK")) {
+            return result = `You lose. ${computerSelection} beats your ${playerSelection}`;
+        }
+        else {
+            return result = "Bummer, it was a tie.";
+        }  
 }
 
 //Basic function just calls the round function and executes it 5 times. Will fix it with a 
