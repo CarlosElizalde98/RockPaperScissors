@@ -6,7 +6,7 @@ function computerPlay() {
 }
 
 //Function determines the conditions of a single round and the result of a round.
-function singleRound(playerSelection, computerSelection) {
+function playSingleRound(playerSelection, computerSelection) {
     let result = '';
     playerSelection = playerSelection.toUpperCase();
     
@@ -33,20 +33,13 @@ function singleRound(playerSelection, computerSelection) {
         }  
 }
 
-//Basic function just calls the round function and executes it 5 times. Will fix it with a 
-//loop later.
-function game() {
-    playerSelection = prompt("Enter Rock, Paper, or Scissors")
-    console.log(singleRound(playerSelection, computerPlay()));
-    playerSelection = prompt("Enter Rock, Paper, or Scissors")
-    console.log(singleRound(playerSelection, computerPlay()));
-    playerSelection = prompt("Enter Rock, Paper, or Scissors")
-    console.log(singleRound(playerSelection, computerPlay()));
-    playerSelection = prompt("Enter Rock, Paper, or Scissors")
-    console.log(singleRound(playerSelection, computerPlay()));
-    playerSelection = prompt("Enter Rock, Paper, or Scissors")
-    console.log(singleRound(playerSelection, computerPlay()));
-}
+//Button Event Listener
+const buttons = document.querySelectorAll('button');
 
-//Calls the game
-game();
+buttons.forEach((button) => {
+
+    button.addEventListener('click', () => {
+        console.log(playSingleRound(button.id, computerPlay()));
+
+    } )
+});
