@@ -1,10 +1,14 @@
 let playerScore = 0;
 let compScore = 0;
-const buttons = document.querySelectorAll('button');
+const rock = document.querySelector('#rock');
+const paper =document.querySelector('#paper');
+const scissors = document.querySelector('#scissors')
 const results = document.querySelector('#results');
 const content =document.createElement('div');
 
-buttons.addEventListener('click', playGame());
+rock.addEventListener('click', playGame(rock));
+paper.addEventListener('click',playGame(paper));
+scissors.addEventListener('click', playGame(scissors));
 
 //Function allows the computer to make a move.
 function computerPlay() {
@@ -40,13 +44,14 @@ function playSingleRound(playerSelection, computerSelection) {
     
 }
 
-//Function keeps track of the score and updates accordingly.
+//Function keeps track of the score while the game is played and updates accordingly.
 function updateGameScore(choice) {
     let gameResult;
-    gameResult = playSingleRound(choice, computerPlay());
+    let choiceString = choice + ' ';
+    
+    gameResult = playSingleRound(choiceString, computerPlay());
     content.textContent=gameResult;
     results.appendChild(content);
-
 
     if (gameResult.includes("win") && playerScore < 5){
         playerScore++;
@@ -56,29 +61,27 @@ function updateGameScore(choice) {
         compScore++;
         return "Player Score: " + playerScore + "  Computer Score: " + compScore;
     }
-    else if (gameResult.includes('tie')) {
+    else if (gameResult.includes("tie")) { 
         return "Tie";
-    }
-    else {
-
     }
 
 }
 
 //Button Event Listener
 //Plays the game and attaches results to screen.
-function playGame() {
+function playGame(choice) {
     const buttons = document.querySelectorAll('button');
     const results = document.querySelector('#results');
     const content = document.createElement('div');
     const score = document.createElement('p');
 
-    buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-            let result = updateGameScore(button.id); //Every time I click a button, a round is played.
-            content.textContent=result;
-            results.appendChild(content);
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                let result = updateGameScore(choice); //Every time I click a button, a round is played.
+                content.textContent=result;
+                results.appendChild(content);
 
-        })
-    });
+            })
+        });
 }
+
