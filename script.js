@@ -52,6 +52,7 @@ const buttons = document.querySelectorAll('button');
 const results = document.querySelector('#results');
 const content = document.createElement('div');
 const score = document.createElement('p');
+const restart = document.createElement('p');
 
 let playerScore = 0;
 let computerScore = 0;
@@ -66,12 +67,15 @@ buttons.forEach((button) => {
                 score.textContent = ("You Win!");
                 playerScore = 0;
                 computerScore = 0;
+                restart.textContent = ("Press any button to play again!");
+                score.appendChild(restart);
             
             } else if (scoreNum[1] >= 5) {
                 score.textContent= "Computer Wins!";
                 playerScore=0;
                 computerScore=0;
-            
+                restart.textContent = ("Press any button to play again!");
+                score.appendChild(restart);
             }
             else {
                 score.textContent = `Player Score: ${scoreNum[0]}  Computer Score: ${scoreNum[1]}`;
