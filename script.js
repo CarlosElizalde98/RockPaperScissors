@@ -42,18 +42,6 @@ function playSingleRound(playerSelection, computerSelection) {
 
 //Function keeps track of score for rounds played.
 function scoreKeeper(scoreString, playerScore, compScore) {
-    console.log(scoreString);
-    console.log(playerScore);
-    console.log(compScore);
-    if (scoreString.includes("win")) {
-        playerScore += 1;
-    }
-    else if (scoreString.includes("lose")){
-        compScore += 1;
-    }
-    else {
-        return [playerScore, compScore];
-    }
     return [playerScore, compScore];
 }
 
@@ -76,9 +64,13 @@ buttons.forEach((button) => {
             scoreNum = scoreKeeper(result, playerScore, computerScore);
             if (scoreNum[0] >= 5) {
                 score.textContent = ("You Win!");
+                playerScore = 0;
+                computerScore = 0;
             
             } else if (scoreNum[1] >= 5) {
                 score.textContent= "Computer Wins!";
+                playerScore=0;
+                computerScore=0;
             
             }
             else {
