@@ -8,8 +8,6 @@ function computerPlay() {
 //Function determines the conditions of a single round and the result of a round.
 function playSingleRound(playerSelection, computerSelection) {
     let result = '';
-    let playerScore = 0;
-    let computerScore = 0;
     playerSelection = playerSelection.toUpperCase();
     
         if ((playerSelection == "ROCK") && (computerSelection == 'Scissors')) {
@@ -43,6 +41,9 @@ function playSingleRound(playerSelection, computerSelection) {
 }
 
 function scoreKeeper(scoreString, playerScore, compScore) {
+    console.log(scoreString);
+    console.log(playerScore);
+    console.log(compScore);
     if (scoreString.includes("win")) {
         playerScore += 1;
     }
@@ -50,7 +51,7 @@ function scoreKeeper(scoreString, playerScore, compScore) {
         compScore += 1;
     }
     else {
-        return "Tie";
+        return "Tie\n " + `Player Score: ${playerScore}  Computer Score = ${compScore}`;
     }
     return [playerScore, compScore];
 }
@@ -64,13 +65,28 @@ const content = document.createElement('div');
 const score = document.createElement('p');
 
 let playerScore = 0;
-let compScore = 0;
+let computerScore = 0;
+
 let scoreNum = '';
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         let result = playSingleRound(button.id, computerPlay()); //Every time I click a button, a round is played.
+        for (let i = 0; i < 5; i++) {
+            scoreNum = scoreKeeper(result, playerScore, computerScore);
+            if (scoreNum[0] >= 5) {
+                score.textContent = ("You Win!");
+                break;
+            } else if (scoreNum[1] >= 5) {
+                score.textContent= "Computer Wins!";
+                break;
+            }
+            else {
+                score.textContent = scoreNum;
+            }
+        }
         content.textContent=result;
         results.appendChild(content);
+        results.appendChild(score);
 
     })
 });
