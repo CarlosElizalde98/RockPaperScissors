@@ -41,7 +41,7 @@ function playSingleRound(playerSelection, computerSelection) {
 }
 
 //Function keeps track of score for rounds played.
-function scoreKeeper(scoreString, playerScore, compScore) {
+function scoreKeeper(playerScore, compScore) {
     return [playerScore, compScore];
 }
 
