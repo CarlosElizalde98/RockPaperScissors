@@ -40,6 +40,7 @@ function playSingleRound(playerSelection, computerSelection) {
     
 }
 
+//Function keeps track of score for rounds played.
 function scoreKeeper(scoreString, playerScore, compScore) {
     console.log(scoreString);
     console.log(playerScore);
@@ -51,7 +52,7 @@ function scoreKeeper(scoreString, playerScore, compScore) {
         compScore += 1;
     }
     else {
-        return "Tie\n " + `Player Score: ${playerScore}  Computer Score = ${compScore}`;
+        return [playerScore, compScore];
     }
     return [playerScore, compScore];
 }
@@ -67,23 +68,23 @@ const score = document.createElement('p');
 let playerScore = 0;
 let computerScore = 0;
 
+//Trigger playRound() when a button is clicked
 let scoreNum = '';
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         let result = playSingleRound(button.id, computerPlay()); //Every time I click a button, a round is played.
-        for (let i = 0; i < 5; i++) {
             scoreNum = scoreKeeper(result, playerScore, computerScore);
             if (scoreNum[0] >= 5) {
                 score.textContent = ("You Win!");
-                break;
+            
             } else if (scoreNum[1] >= 5) {
                 score.textContent= "Computer Wins!";
-                break;
+            
             }
             else {
-                score.textContent = scoreNum;
+                score.textContent = `Player Score: ${scoreNum[0]}  Computer Score: ${scoreNum[1]}`;
             }
-        }
+      
         content.textContent=result;
         results.appendChild(content);
         results.appendChild(score);
